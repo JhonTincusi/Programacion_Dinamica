@@ -25,7 +25,7 @@ class TSP_Dynamic_Programming
                 $t=$s & ~(1 << $j);
                 for($i=0; $i<$num_cities; $i++)
                 {
-                    if($s & (1 << $i) && $i!=$j && $subdist[$t][$i]<999){
+                    if($s & (1 << $i) && $i!=$j && $subdist[$t][$i]<PHP_INT_MAX){
                         
                         $subdist[$s][$j]=min($subdist[$s][$j], $subdist[$t][$i]+$dist[$i][$j]);
 
@@ -51,7 +51,7 @@ class TSP_Dynamic_Programming
         for($i=0;$i<$num_cities-1;$i++)
         {
             $shortest;
-            $min_dist=999;
+            $min_dist=PHP_INT_MAX;
             
             // encontrar la siguiente ciudad no visitada con la mejor subdistancia desde la ciudad anterior en el ciclo 
             for($j=0;$j<$num_cities;$j++){
@@ -114,7 +114,7 @@ class TSP_Dynamic_Programming
         {
             for($j=0; $j<$num_subset; $j++)
             {
-                $subdist[$i][$j]=999;
+                $subdist[$i][$j]=PHP_INT_MAX;
             }
         }
 
